@@ -36,7 +36,7 @@ jobs:
         run: tar -czf ${{ env.IMAGE_NAME }}.tar.gz -C ${{ env.SRC_PATH }} node_modules
 
       - name: Upload common artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.IMAGE_NAME }}
           retention-days: 1
@@ -59,7 +59,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: ${{ env.IMAGE_NAME }}
 
@@ -87,7 +87,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: ${{ env.IMAGE_NAME }}
 
@@ -97,7 +97,7 @@ jobs:
       - name: Run Tests
         run: |
           mkdir -p ${{ env.SRC_PATH }}coverage
-          HAVE_TEST=$(find ${{ env.SRC_PATH }} -name "*.test.ts" | wc -l)
+          HAVE_TEST=$(find ${{ env.SRC_PATH }} -name "*.test.ts" | grep -iv node_modules | wc -l)
           if [ $HAVE_TEST -ne 0 ];
           then
             yarn --cwd ${{ env.SRC_PATH }} test:coverage
@@ -105,7 +105,7 @@ jobs:
           echo "HAVE_TEST=${HAVE_TEST}" > ${{ env.SRC_PATH }}coverage/have_test.txt
 
       - name: Upload Coverage Report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report-${{ env.IMAGE_NAME }}
           retention-days: 1
@@ -123,7 +123,7 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Download artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: coverage-report-${{ env.IMAGE_NAME }}
           path: ${{ env.SRC_PATH }}coverage
@@ -133,7 +133,7 @@ jobs:
           cat ${{ env.SRC_PATH }}coverage/have_test.txt >> $GITHUB_ENV
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         if: env.HAVE_TEST != 0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
