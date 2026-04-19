@@ -1,0 +1,7 @@
+node_modules
+dist
+
+code/config/keys/**/*
+code/config/routes.json
+
+.env

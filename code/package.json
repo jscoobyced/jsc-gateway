@@ -1,0 +1,54 @@
+{
+  "name": "jsc-gateway",
+  "version": "0.0.1",
+  "mcpName": "io.github.jscoobyced/jsc-gateway",
+  "description": "A web gateway with JWT authentication and authorization. Optionally supports WebSocket proxying.",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jscoobyced/jsc-gateway/"
+  },
+  "keywords": [
+    "typescript",
+    "web",
+    "gateway",
+    "jwt",
+    "authentication",
+    "authorization",
+    "websocket"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "format": "prettier --write .",
+    "build": "tsc --project tsconfig.build.json",
+    "lint": "eslint . --ext .ts",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "generate-keys": "node --import tsx src/scripts/generate-keys.ts",
+    "generate-token": "node --import tsx src/scripts/generate-token.ts"
+  },
+  "dependencies": {
+    "@fastify/http-proxy": "^11.4.4",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/websocket": "^11.2.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5",
+    "jose": "^6.2.2",
+    "pino": "^10.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.2",
+    "@typescript-eslint/parser": "^8.58.2",
+    "eslint": "^10.2.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2"
+  }
+}

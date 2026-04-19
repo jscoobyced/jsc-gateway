@@ -1,0 +1,10 @@
+{
+  "routes": [
+    {
+      "prefix": "/api",
+      "target": "http://192.168.1.111:8080",
+      "auth": true,
+      "requiredScopes": ["read:my-api"]
+    }
+  ]
+}
