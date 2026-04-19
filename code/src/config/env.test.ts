@@ -45,7 +45,7 @@ describe('env config', () => {
     expect(env.APP_ROOT).toBe(process.cwd())
     expect(env.JWT_PUBLIC_KEY_PATH).toContain('/config/keys/public.jwks.json')
     expect(env.JWT_PRIVATE_KEY_PATH).toContain('/config/keys/private.jwks.json')
-    expect(env.ROUTES_CONFIG).toContain('/config/routes.json')
+    expect(env.ROUTES_CONFIG).toContain('/config/routes.example.json')
   })
 
   it('prefers explicit environment overrides', async () => {

@@ -19,7 +19,7 @@ export const env = {
   RATE_LIMIT_TIME_WINDOW: Number(process.env.RATE_LIMIT_TIME_WINDOW || 60000),
   ROUTES_CONFIG:
     process.env.ROUTES_CONFIG ||
-    `${process.env.APP_ROOT || process.cwd()}/config/routes.json`,
+    `${process.env.APP_ROOT || process.cwd()}/config/routes.example.json`,
   ENABLE_WEBSOCKET_PROXY: process.env.ENABLE_WEBSOCKET_PROXY === 'true',
   APP_ROOT: process.env.APP_ROOT || process.cwd(),
 }

@@ -1,6 +1,6 @@
 {
   "name": "jsc-gateway",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A web gateway with JWT authentication and authorization. Optionally supports WebSocket proxying.",
   "main": "dist/index.js",
   "repository": {
