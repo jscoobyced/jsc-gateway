@@ -100,6 +100,7 @@ jobs:
           HAVE_TEST=$(find ${{ env.SRC_PATH }} -name "*.test.ts" | grep -iv node_modules | wc -l)
           if [ $HAVE_TEST -ne 0 ];
           then
+            yarn --cwd ${{ env.SRC_PATH }} generate-keys
             yarn --cwd ${{ env.SRC_PATH }} test:coverage
           fi
           echo "HAVE_TEST=${HAVE_TEST}" > ${{ env.SRC_PATH }}coverage/have_test.txt
