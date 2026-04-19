@@ -13,7 +13,7 @@ env:
     Optionally supports WebSocket proxying.
   SRC_PATH: code/
   DOCKERFILE_PATH: etc/docker/Dockerfile
-  NODE_VERSION: "24-alpine"
+  NODE_VERSION: "24"
 
 jobs:
   install:

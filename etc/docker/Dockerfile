@@ -1,6 +1,4 @@
-ARG NODE_VERSION=24-alpine
-
-FROM node:${NODE_VERSION} AS builder
+FROM node:24-alpine AS builder
 
 # Install dependencies
 RUN apk update && apk upgrade
@@ -18,7 +16,7 @@ RUN yarn --cwd code install
 RUN yarn --cwd code build
 
 # Production image
-FROM node:${NODE_VERSION}
+FROM node:24-alpine
 
 COPY --from=builder /app/dist /app/
 COPY --from=builder /app/node_modules /app/node_modules
