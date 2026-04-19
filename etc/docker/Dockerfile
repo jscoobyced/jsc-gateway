@@ -22,7 +22,6 @@ COPY --from=builder /app/dist /app/
 COPY --from=builder /app/node_modules /app/node_modules
 COPY --from=builder /app/.env.example /app/.env
 COPY code/config/routes.example.json /app/config/routes.json
-RUN mkdir -p /app/config/keys
 
 EXPOSE 3000
 
