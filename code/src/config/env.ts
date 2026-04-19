@@ -8,6 +8,7 @@ export const env = {
   JWT_AUDIENCE: process.env.JWT_AUDIENCE!,
   JWKS_URL: process.env.JWKS_URL!,
   JWT_ALGORITHM: process.env.JWT_ALGORITHM || 'RS256',
+  JWT_TOKEN_EXPIRY: process.env.JWT_TOKEN_EXPIRY || '15m',
   JWT_PUBLIC_KEY_PATH:
     process.env.JWT_PUBLIC_KEY_PATH ||
     `${process.env.APP_ROOT || process.cwd()}/config/keys/public.jwks.json`,

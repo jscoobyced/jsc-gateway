@@ -23,7 +23,7 @@ const main = async () => {
     .setProtectedHeader({ alg: env.JWT_ALGORITHM, kid: 'key-1' })
     .setIssuer(env.JWT_ISSUER)
     .setAudience(env.JWT_AUDIENCE)
-    .setExpirationTime('15m')
+    .setExpirationTime(env.JWT_TOKEN_EXPIRY)
     .sign(privateKey)
 
   console.log('Subject:', sub)
