@@ -5,5 +5,11 @@
     "noEmit": false,
     "outDir": "dist"
   },
-  "exclude": ["src/scripts/**/*"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "src/scripts/**/*",
+    "src/**/*.test.ts"
+  ]
 }

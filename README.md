@@ -2,6 +2,9 @@
 
 JSC Gateway is a Fastify and TypeScript reverse proxy that sits in front of one or more upstream services. It validates JWT bearer tokens, enforces scope-based access rules, applies rate limits, optionally proxies WebSocket traffic, and forwards authenticated user context to downstream applications.
 
+[![Build](https://github.com/jscoobyced/jsc-gateway/actions/workflows/build.yml/badge.svg)](https://github.com/jscoobyced/jsc-gateway/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/jscoobyced/jsc-gateway/graph/badge.svg?token=QPZCDPBPAH)](https://codecov.io/gh/jscoobyced/jsc-gateway)
+
 > **Package manager rule:** always use **Yarn** in this project. Do **not** use npm.
 
 ## What the application does
