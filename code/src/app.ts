@@ -6,9 +6,8 @@ import { authPlugin } from './plugins/auth.js'
 import { proxyPlugin } from './plugins/proxy.js'
 import { rateLimitPlugin } from './plugins/rateLimit.js'
 
-const keyDir = new URL('../', import.meta.url)
 const publicJwks = JSON.parse(
-  readFileSync(new URL(env.JWT_PUBLIC_KEY_PATH, keyDir), 'utf8'),
+  readFileSync(new URL(env.JWT_PUBLIC_KEY_PATH, import.meta.url), 'utf8'),
 ) as { keys: JWK[] }
 
 const [publicJwk] = publicJwks.keys

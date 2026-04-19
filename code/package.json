@@ -1,6 +1,6 @@
 {
   "name": "jsc-gateway",
-  "version": "0.0.1",
+  "version": "0.0.",
   "mcpName": "io.github.jscoobyced/jsc-gateway",
   "description": "A web gateway with JWT authentication and authorization. Optionally supports WebSocket proxying.",
   "main": "dist/index.js",
@@ -29,7 +29,9 @@
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "generate-keys": "node --import tsx src/scripts/generate-keys.ts",
-    "generate-token": "node --import tsx src/scripts/generate-token.ts"
+    "generate-token": "node --import tsx src/scripts/generate-token.ts",
+    "test": "echo \"No tests yet\"",
+    "test:coverage": "echo \"No tests yet\""
   },
   "dependencies": {
     "@fastify/http-proxy": "^11.4.4",

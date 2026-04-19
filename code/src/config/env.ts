@@ -9,11 +9,16 @@ export const env = {
   JWKS_URL: process.env.JWKS_URL!,
   JWT_ALGORITHM: process.env.JWT_ALGORITHM || 'RS256',
   JWT_PUBLIC_KEY_PATH:
-    process.env.JWT_PUBLIC_KEY_PATH || '../keys/public.jwks.json',
+    process.env.JWT_PUBLIC_KEY_PATH ||
+    `${process.env.APP_ROOT || process.cwd()}/config/keys/public.jwks.json`,
   JWT_PRIVATE_KEY_PATH:
-    process.env.JWT_PRIVATE_KEY_PATH || '../keys/private.jwks.json',
+    process.env.JWT_PRIVATE_KEY_PATH ||
+    `${process.env.APP_ROOT || process.cwd()}/config/keys/private.jwks.json`,
   RATE_LIMIT_MAX: Number(process.env.RATE_LIMIT_MAX || 100),
   RATE_LIMIT_TIME_WINDOW: Number(process.env.RATE_LIMIT_TIME_WINDOW || 60000),
-  ROUTES_CONFIG: process.env.ROUTES_CONFIG || 'config/routes.json',
+  ROUTES_CONFIG:
+    process.env.ROUTES_CONFIG ||
+    `${process.env.APP_ROOT || process.cwd()}/config/routes.json`,
   ENABLE_WEBSOCKET_PROXY: process.env.ENABLE_WEBSOCKET_PROXY === 'true',
+  APP_ROOT: process.env.APP_ROOT || process.cwd(),
 }

@@ -1,13 +1,10 @@
 import { exportJWK, generateKeyPair } from 'jose'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { env } from '../config/env.js'
 
-const currentDir = dirname(fileURLToPath(import.meta.url))
-const keysDir = resolve(currentDir, '../..')
-const publicKeyPath = resolve(keysDir, env.JWT_PUBLIC_KEY_PATH)
-const privateKeyPath = resolve(keysDir, env.JWT_PRIVATE_KEY_PATH)
+const publicKeyPath = resolve(env.JWT_PUBLIC_KEY_PATH)
+const privateKeyPath = resolve(env.JWT_PRIVATE_KEY_PATH)
 const algorithm = env.JWT_ALGORITHM || 'RS512'
 
 async function main() {
