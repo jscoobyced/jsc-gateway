@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jsc-gateway-config
+  namespace: my-ns
+data:
+  routes.json: |
+    {
+      "routes": [
+        {
+          "prefix": "/",
+          "target": "http://192.168.1.111:8080",
+          "auth": true,
+          "requiredScopes": ["read:my-api"]
+        }
+      ]
+    }
+  private.jwks.json: |
+    {
+      
+    }
+  public.jwks.json: |
+    {
+      "keys": [
+        {
+          
+        }
+      ]
+    }

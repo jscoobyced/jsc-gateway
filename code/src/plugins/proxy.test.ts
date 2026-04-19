@@ -61,7 +61,7 @@ describe('proxyPlugin', () => {
     const route = {
       auth: true,
       prefix: '/secure',
-      requiredScopes: ['read:ollama'],
+      requiredScopes: ['read:my-api'],
       target: 'http://upstream.test',
     }
     const { proxy, proxyPlugin } = await loadProxyPlugin([route], true)
@@ -117,7 +117,7 @@ describe('proxyPlugin', () => {
         {
           user: {
             role: 'admin',
-            scope: ['read:ollama'],
+            scope: ['read:my-api'],
             sub: 'user-1',
           },
         },
@@ -127,7 +127,7 @@ describe('proxyPlugin', () => {
     expect(rewrittenHeaders).toEqual({
       'x-user-id': 'user-1',
       'x-user-role': 'admin',
-      'x-user-scope': 'read:ollama',
+      'x-user-scope': 'read:my-api',
     })
 
     const forbiddenReply = {
@@ -155,7 +155,7 @@ describe('proxyPlugin', () => {
     await hookRegistrations[1]!.handler(
       {
         user: {
-          scope: ['read:ollama'],
+          scope: ['read:my-api'],
         },
       },
       allowedReply,

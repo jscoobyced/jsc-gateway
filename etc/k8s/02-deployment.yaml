@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jsc-gateway-app
+  namespace: my-ns
+  labels:
+    app: jsc-gateway-app
+    component: jsc-gateway-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jsc-gateway-app
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: jsc-gateway-app
+        tier: frontend
+    spec:
+      containers:
+        - name: jsc-gateway
+          image: jscdroiddev/jsc-gateway:latest
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "Asia/Bangkok"
+            - name: JWT_AUDIENCE
+              value: "my-api"
+            - name: JWT_ISSUER
+              value: "https://my-auth-server.com/"
+            - name: JWT_PUBLIC_KEY_PATH
+              value: "/app/cfg/public.jwks.json"
+            - name: JWT_PRIVATE_KEY_PATH
+              value: "/app/cfg/private.jwks.json"
+            - name: ROUTES_CONFIG
+              value: "/app/cfg/routes.json"
+            - name: ENABLE_WEBSOCKET_PROXY
+              value: "true"
+          ports:
+            - containerPort: 3000
+              name: jsc-gateway-app
+          volumeMounts:
+            - name: jsc-gateway-config
+              mountPath: /app/cfg
+              readOnly: true
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+            requests:
+              cpu: "500m"
+              memory: "128Mi"
+      volumes:
+        - name: jsc-gateway-config
+          configMap:
+            name: jsc-gateway-config
+            defaultMode: 744

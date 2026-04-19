@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jsc-gateway-svc
+  namespace: my-ns
+  labels:
+    app: jsc-gateway-app
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3030
+      targetPort: 3000
+  selector:
+    app: jsc-gateway-app
+    tier: frontend
+  externalIPs:
+    - 192.168.1.x
